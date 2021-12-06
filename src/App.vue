@@ -1,28 +1,35 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div class="upload">
+      <upload @imagesUploaded="setImages" />
+    </div>
+    <div class="gallery">
+      <gallery :images="images" />
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Gallery from "./components/Gallery/Gallery.vue";
+import Upload from "./components/Upload/Upload.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    Gallery,
+    Upload,
+  },
+  data() {
+    return {
+      images: [],
+    };
+  },
+  methods: {
+    setImages(images) {
+      this.images = images;
+    },
   },
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
